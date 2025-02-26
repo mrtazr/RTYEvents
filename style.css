@@ -25,12 +25,14 @@ header {
 }
 
 .event-table {
-    width: 80%;
+    width: 90%;
+    max-width: 1200px;
     margin: 20px auto;
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
 }
 
 table {
@@ -38,6 +40,9 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
     background: white;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 thead {
@@ -78,4 +83,19 @@ tr:hover {
 th {
     cursor: pointer;
     user-select: none;
+}
+
+@media screen and (max-width: 768px) {
+    .logo h1 {
+        font-size: 18px;
+    }
+    
+    th, td {
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    .event-table {
+        padding: 10px;
+    }
 }
