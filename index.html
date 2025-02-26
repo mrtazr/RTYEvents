@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTY TCG Event Spreadsheet</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function sortEvents() {
+                let table = document.querySelector("tbody");
+                let rows = Array.from(table.rows);
+                
+                rows.sort((a, b) => {
+                    let dateA = new Date(a.cells[1].textContent.split('-')[0].trim());
+                    let dateB = new Date(b.cells[1].textContent.split('-')[0].trim());
+                    return dateA - dateB;
+                });
+                
+                rows.forEach(row => table.appendChild(row));
+            }
+            
+            function removePastEvents() {
+                let today = new Date();
+                let table = document.querySelector("tbody");
+                let rows = Array.from(table.rows);
+                
+                rows.forEach(row => {
+                    let eventEndDate = new Date(row.cells[1].textContent.split('-')[1]?.trim() || row.cells[1].textContent.trim());
+                    if (eventEndDate < today) {
+                        row.remove();
+                    }
+                });
+            }
+            
+            sortEvents();
+            removePastEvents();
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://i.imgur.com/oaZRbFd.png" alt="RTY TCG Logo">
+            <h1>RTY TCG Event Spreadsheet</h1>
+        </div>
+    </header>
+    
+    <section class="event-table">
+        <h2>Upcoming Events</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Event Dates</th>
+                    <th>Sign Up Dates</th>
+                    <th>Sign Up Time</th>
+                    <th>Sign Up Link</th>
+                    <th>Region</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>OP10 Release Event</td>
+                    <td>March 14-20, 2025</td>
+                    <td>Feb 28, 2025	</td>
+                    <td></td>
+                    <td><a href="https://en.onepiece-cardgame.com/events/2025/store_tournament_op10/">Sign Up</a></td>
+                    <td>Global</td>
+                </tr>
+                <tr>
+                    <td>Sangsang TC</td>
+                    <td>March 1, 2025</td>
+                    <td>March 1, 2025</td>
+                    <td>8:00 AM</td>
+                    <td><a href="https://onepiece.sangsang.events/">Sign Up</a></td>
+                    <td>LATAM</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
