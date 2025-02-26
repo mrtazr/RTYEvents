@@ -43,6 +43,7 @@ table {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
+    max-width: 100%;
 }
 
 thead {
@@ -54,6 +55,7 @@ th, td {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
+    word-wrap: break-word;
 }
 
 a {
@@ -86,16 +88,20 @@ th {
 }
 
 @media screen and (max-width: 768px) {
-    .logo h1 {
-        font-size: 18px;
+    .event-table {
+        width: 95%;
+        overflow-x: auto;
+    }
+    
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
     }
     
     th, td {
-        padding: 8px;
-        font-size: 14px;
-    }
-    
-    .event-table {
-        padding: 10px;
+        font-size: 12px;
+        padding: 6px;
     }
 }
